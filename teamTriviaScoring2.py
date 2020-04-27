@@ -45,19 +45,13 @@ def getKey(team):
 	"""
 	return team.pointsTotal
 
-def scoreboard(list_teams):
-	"""
-	A function for ranking the teams from worst to best after each round.
-	"""
-	x = sorted(list_teams, key=getKey)
-	print(*x, sep = "\n")
-
-
 def scoreRound(list_teams, roundScore):
 	"""
 	list_teams: a list of teams playing trivia.
 	roundScore: a list of scores for the teams playing trivia.  Presently, order matters.
 	roundNumber: increment the round by one.
+	Added a plot function to show the present round score (red) and total points (blue).
+	Combined scoreboard function with scoreRound to reduce inputs.
 	"""
 	plt.close() #close the current figure
 	for t, s in zip(list_teams, roundScore):
@@ -66,8 +60,10 @@ def scoreRound(list_teams, roundScore):
 	plt.barh(*zip(*[(str(team.name), float(team.pointsTotal)) for team in list_teams]), color='blue', label='Total')
 	plt.barh(*zip(*[(str(team.name), float(team.pointsThisRound)) for team in list_teams]), color='red', label='This Round')
 	plt.legend(loc="lower right")
+	x = sorted(list_teams, key=getKey)
+	print(*x, sep="\n")
 
-def undo_score(list_teams, roundScore):
+def undoScore(list_teams, roundScore):
 	"""
 	Undo last scoring in event of mistake. Inverse of score_a_round
 	list_teams: a list of teams playing trivia.
