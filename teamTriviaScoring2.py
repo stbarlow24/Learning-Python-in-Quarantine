@@ -60,8 +60,7 @@ def scoreRound(list_teams, roundScore):
 	plt.barh(*zip(*[(str(team.name), float(team.pointsTotal)) for team in list_teams]), color='blue', label='Total')
 	plt.barh(*zip(*[(str(team.name), float(team.pointsThisRound)) for team in list_teams]), color='red', label='This Round')
 	plt.legend(loc="lower right")
-
-	x = sorted(list_teams, key=getKey) #originally from scoreboard function
+	x = sorted(list_teams, key=getKey)
 	print(*x, sep="\n")
 
 def undoScore(list_teams, roundScore):
@@ -94,3 +93,11 @@ round4 = [(10+4), 5, (10+8+3), (10+2+1+3), (5+4+2), (8+10+1), (3+5+4)]
 round5 = [(10+6+5+3+1+4+9+8),(8+9+10+4+3+7+2+5),(3+4+6+8+1+10+9),(10+9+1+3+7+6+4+8+2),(4+2+10+3+7+6+5),(10+5+6+9+8+3),(4+1+7+3+5+10+2)]
 round6 = [(13.5+7+6+15+2.5+2+12+0),(15+7+8+5+13.5+2+6+1.5),(4+9+3+3.5+15+2.5+2),(10+3+9+1.5+2+2.5+3.5),(15+6+7+8+13.5+1+4+5+1.5),(9+3.5+8+2.5+15+2+1+6+.5),(15+8+7+2.5+13.5+2+1.5+3+1)]
 round7 =[30, -20, -50, 141.5, -90, -20, -80] #final jeopardy, negative scores indicate loss of points associated with wager.
+
+
+#To operate this program for Team Trivia, use the following workflow:
+#1. Initialize team objects.
+#2. Create a list of teams. 
+#3. Initialize a round score (requires same order as team list)
+#4. roundScore(teamList, round#)
+#5. If you make a mistake, reverse it by using undoScore(teamList, round#)
