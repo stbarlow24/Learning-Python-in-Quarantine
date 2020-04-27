@@ -60,7 +60,8 @@ def scoreRound(list_teams, roundScore):
 	plt.barh(*zip(*[(str(team.name), float(team.pointsTotal)) for team in list_teams]), color='blue', label='Total')
 	plt.barh(*zip(*[(str(team.name), float(team.pointsThisRound)) for team in list_teams]), color='red', label='This Round')
 	plt.legend(loc="lower right")
-	x = sorted(list_teams, key=getKey)
+
+	x = sorted(list_teams, key=getKey) #originally from scoreboard function
 	print(*x, sep="\n")
 
 def undoScore(list_teams, roundScore):
